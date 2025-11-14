@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD Data Manager - Daily Sheets</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700;800&family=Lobster:wght@400&display=swap" rel="stylesheet">
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase (Keep this commented out)
+      // const firebaseConfig = { /* ... your config ... */ };
+      // firebase.initializeApp(firebaseConfig);
+      // const db = firebase.firestore(); 
+    </script>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <nav class="sidebar">
+            <div class="logo">DASHBOARD</div>
+            
+            <div class="user-profile">
+                <div class="user-icon-container">
+                    <span class="user-shape"></span>
+                    <span class="gear-shape"></span>
+                </div>
+                <span class="username">Admin User -- ADIL
+                <span class="username">Complete AI Based (Project 0001) </span>
+
+
+            </div>
+            <ul id="sheetList">
+            </ul>
+        </nav>
+</span><br>
+</span><br>
+        <main class="content">
+            <div id="mainTitleHeader">
+                <h1>
+                    <span id="typewriterText"></span>
+                    <span class="cursor">|</span>
+                </h1>
+                <p>Select a sheet from the sidebar to view your data.</p>
+            </div>
+            
+            <div id="dataContainer">
+            </div>
+        </main>
+        
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

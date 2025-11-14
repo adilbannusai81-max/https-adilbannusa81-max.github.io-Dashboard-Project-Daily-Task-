@@ -1,0 +1,403 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+/* App Layout */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR STYLES --- */
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50; /* Dark blue/grey */
+    color: white;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+/* UPDATED Logo Styling - Modern, Clean Professional Look */
+.sidebar .logo {
+    /* Adjusted font size to fit "CONTROL PANEL" better */
+    font-size: 1.7em; 
+    font-weight: 700; 
+    
+    /* Font style for modern look */
+    font-family: 'Oswald', 'Montserrat', sans-serif; 
+    
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    
+    color: #ECF0F1; /* Clean text color */
+    
+    /* Subtle text shadow for a raised, smooth effect */
+    text-shadow: 
+        1px 1px 1px rgba(0, 0, 0, 0.4), 
+        -1px -1px 1px rgba(255, 255, 255, 0.1);
+        
+    letter-spacing: 2px; 
+    transition: all 0.3s ease-in-out; 
+    text-transform: uppercase;
+}
+
+.sidebar .logo:hover {
+    transform: translateY(-1px);
+    color: #FFFFFF;
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.5),
+        -1px -1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* --- NEW: INTERACTIVE USER PROFILE STYLING --- */
+.user-profile {
+    text-align: center;
+    margin: 20px 0 30px 0;
+    padding: 0 20px;
+    color: #65bed4; 
+    position: relative;
+}
+
+.user-icon-container {
+    width: 80px; 
+    height: 80px;
+    border-radius: 50%;
+    background-color: #f0f2f5; /* Light background for the circle */
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px auto; 
+    border: 3px solid #7f8c8d; /* Outline for the circle */
+    overflow: hidden; 
+    position: relative;
+    cursor: pointer; 
+    transition: all 0.3s ease-in-out; 
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2), 0 0 10px rgba(255,255,255,0.1);
+}
+
+/* User Shape (the 'man' icon) */
+.user-shape {
+    position: absolute;
+    width: 30px; 
+    height: 30px;
+    border-radius: 50%;
+    background-color: #3498db; 
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.4s ease-in-out;
+    z-index: 2; 
+}
+
+.user-shape::before { /* Body */
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 40px;
+    background-color: #3498db; 
+    border-radius: 40px 40px 0 0;
+    bottom: -35px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Gear Shape */
+.gear-shape {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #7f8c8d; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    right: 15px; 
+    transform: translateY(-50%) rotate(0deg); 
+    transition: all 0.4s ease-in-out;
+    z-index: 3; 
+}
+
+.gear-shape::before,
+.gear-shape::after { /* Teeth of the gear */
+    content: '';
+    position: absolute;
+    background-color: #7f8c8d;
+}
+
+.gear-shape::before { /* Horizontal tooth */
+    width: 35px;
+    height: 8px;
+    border-radius: 2px;
+}
+
+.gear-shape::after { /* Vertical tooth */
+    width: 8px;
+    height: 35px;
+    border-radius: 2px;
+}
+
+/* Hover Effects */
+.user-icon-container:hover {
+    background-color: #3b5065; 
+    border-color: #3498db; 
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.4), 0 0 15px rgba(52,152,219,0.3);
+}
+
+.user-icon-container:hover .user-shape {
+    transform: translateX(-150%) translateY(-10px); 
+    background-color: #2980b9; 
+}
+
+.user-icon-container:hover .user-shape::before {
+    background-color: #2980b9; 
+}
+
+.user-icon-container:hover .gear-shape {
+    transform: translateX(100%) translateY(-10px) rotate(360deg); 
+    background-color: #95a5a6; 
+}
+
+.user-icon-container:hover .gear-shape::before,
+.user-icon-container:hover .gear-shape::after {
+    background-color: #95a5a6;
+}
+
+.user-profile .username {
+    display: block; 
+    font-size: 1em;
+    font-weight: 600;
+    color: #f8f8f8; 
+    margin-top: 10px;
+}
+
+/* --- Sidebar Navigation Links --- */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li a {
+    display: flex; 
+    align-items: center;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #c0c9d3;
+    font-size: 0.95em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s, color 0.2s, padding-left 0.2s;
+}
+
+/* Enhanced Hover & Active States */
+.sidebar li a:hover {
+    background-color: #34495e;
+    color: white; 
+    padding-left: 25px; 
+}
+
+.sidebar li a.active {
+    background-color: #3498db; 
+    color: white;
+    font-weight: 700;
+    border-left: 5px solid #FFD700; /* Sharp gold indicator */
+    padding-left: 20px;
+    box-shadow: 0 0 10px rgba(52, 152, 219, 0.4); 
+}
+
+/* --- MAIN CONTENT STYLES --- */
+.content {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+    background-color: #f4f7f6;
+}
+
+/* Main Heading Styling */
+.content h1 {
+    font-family: 'Poppins', sans-serif; 
+    font-size: 3em; 
+    color: #5495d6;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 15px;
+    
+    /* Animation fix styles */
+    display: flex;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.content h1::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #3498db;
+    border-radius: 2px;
+}
+
+.content p {
+    text-align: center;
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* Cursor Styling and Animation */
+.cursor {
+    display: inline-block;
+    color: #5495d6;
+    font-size: 1.1em;
+    font-weight: 300;
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* --- DATA TABLE STYLES --- */
+#dataContainer h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.data-table th,
+.data-table td {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #3498db; 
+    color: white;
+    font-weight: 700;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table tbody tr:hover {
+    background-color: #e8f4f8;
+}
+
+/* Status Text Styles */
+.status-pending-text {
+    color: #f44336;
+    font-weight: 700;
+}
+.status-complete-text {
+    color: #4CAF50;
+    font-weight: 700;
+}
+
+/* Checkmark Button Styling */
+.check-btn {
+    border: none;
+    padding: 8px 15px;
+    border-radius: 50%;
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: #d8c621;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.check-btn:hover {
+    background-color: #a7a533;
+    transform: scale(1.05);
+}
+
+.check-btn:active {
+    transform: translateY(1px);
+}
+
+.completed-text {
+    font-weight: 600;
+    color: #eaffeb;
+    display: block;
+    text-align: center;
+}
+
+/* --- FORM STYLING --- */
+.form-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: border-color 0.2s;
+}
+
+.form-container input:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #388e3c;
+}
