@@ -5,56 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AD Data Manager - Daily Sheets</title>
     
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/Dashboard-Project-Daily-Task/style.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700;800&family=Lobster:wght@400&display=swap" rel="stylesheet">
     
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script>
-      // Initialize Firebase (Keep this commented out)
-      // const firebaseConfig = { /* ... your config ... */ };
-      // firebase.initializeApp(firebaseConfig);
-      // const db = firebase.firestore(); 
-    </script>
 </head>
 <body>
 
-    <div class="app-container">
-        
-        <nav class="sidebar">
-            <div class="logo">DASHBOARD</div>
-            
-            <div class="user-profile">
-                <div class="user-icon-container">
-                    <span class="user-shape"></span>
-                    <span class="gear-shape"></span>
+    <div id="login-container">
+        <div class="form-container" id="login-box">
+            <h2>CONTROL PANEL LOGIN</h2>
+            <form id="login-form" onsubmit="event.preventDefault(); checkLogin();">
+                <div class="form-group">
+                    <label for="username-input">Username</label>
+                    <input type="text" id="username-input" required>
                 </div>
-                <span class="username">Admin User -- ADIL
-                <span class="username">Complete AI Based (Project 0001) </span>
+                <div class="form-group">
+                    <label for="password-input">Password</label>
+                    <input type="password" id="password-input" required>
+                </div>
+                <button type="submit" class="submit-btn" id="login-button">Log In</button>
+                <p id="login-error" style="color: #f44336; text-align: center; margin-top: 10px; display: none;">Invalid Username or Password.</p>
+                
+                <p style="text-align: center; margin-top: 15px;">
+                    <a href="#" onclick="showCredentials(event)" style="color: #3498db; font-size: 0.9em; text-decoration: none;">
+                        Forgot Username / Password?
+                    </a>
+                </p>
+            </form>
+        </div>
+    </div> 
 
-
-            </div>
-            <ul id="sheetList">
-            </ul>
-        </nav>
-</span><br>
-</span><br>
-        <main class="content">
-            <div id="mainTitleHeader">
-                <h1>
-                    <span id="typewriterText"></span>
-                    <span class="cursor">|</span>
-                </h1>
-                <p>Select a sheet from the sidebar to view your data.</p>
-            </div>
+    <div id="app-wrapper" style="display: none;"> 
+        <div class="app-container">
             
-            <div id="dataContainer">
-            </div>
-        </main>
-        
-    </div>
+            <nav class="sidebar">
+                <div class="logo">CONTROL PANEL</div>
+                
+                <div class="user-profile">
+                    <div class="user-icon-container">
+                        <span class="user-shape"></span>
+                        <span class="gear-shape"></span>
+                    </div>
+                    <span class="username">
+                        <span class="main-title">Admin User -- ADIL</span>
+                        <span class="sub-title">Complete AI Based</span>
+                        <span class="sub-title">(Project 0001)</span>
+                    </span>
+                </div>
+                <ul id="sheetList">
+                </ul>
+            </nav>
 
-    <script src="script.js"></script>
+            <main class="content">
+                <div id="mainTitleHeader">
+                    <h1>
+                        <span id="typewriterText"></span>
+                        <span class="cursor">|</span>
+                    </h1>
+                    <p>Select a sheet from the sidebar to view your data.</p>
+                </div>
+                
+                <div id="dataContainer">
+                </div>
+            </main>
+            
+        </div>
+    </div> 
+
+    <script src="/Dashboard-Project-Daily-Task/script.js"></script>
 </body>
 </html>
