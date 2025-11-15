@@ -1,3 +1,97 @@
+You are correct. The primary reason for the "broken" appearance on GitHub Pages is almost always a path issue. Even with the absolute path fix, GitHub Pages can be finicky.
+
+We will use the safest possible pathing method—a Repository-Relative Path—to ensure your files connect correctly.
+
+Here is the complete, final set of code for all three files, using the most reliable linking methods.
+
+1. Complete index.html (Final)
+This file uses the safest form of relative linking, assuming all files are in the repository root.
+
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD Data Manager - Daily Sheets</title>
+    
+    <link rel="stylesheet" href="./style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@700;800&family=Lobster:wght@400&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+
+    <div id="login-container">
+        <div class="form-container" id="login-box">
+            <h2>CONTROL PANEL LOGIN</h2>
+            <form id="login-form" onsubmit="event.preventDefault(); checkLogin();">
+                <div class="form-group">
+                    <label for="username-input">Username</label>
+                    <input type="text" id="username-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="password-input">Password</label>
+                    <input type="password" id="password-input" required>
+                </div>
+                <button type="submit" class="submit-btn" id="login-button">Log In</button>
+                <p id="login-error" style="color: #f44336; text-align: center; margin-top: 10px; display: none;">Invalid Username or Password.</p>
+                
+                <p style="text-align: center; margin-top: 15px;">
+                    <a href="#" onclick="showCredentials(event)" style="color: #3498db; font-size: 0.9em; text-decoration: none;">
+                        Forgot Username / Password?
+                    </a>
+                </p>
+            </form>
+        </div>
+    </div> 
+
+    <div id="app-wrapper" style="display: none;"> 
+        <div class="app-container">
+            
+            <nav class="sidebar">
+                <div class="logo">CONTROL PANEL</div>
+                
+                <div class="user-profile">
+                    <div class="user-icon-container">
+                        <span class="user-shape"></span>
+                        <span class="gear-shape"></span>
+                    </div>
+                    <span class="username">
+                        <span class="main-title">Admin User -- ADIL</span>
+                        <span class="sub-title">Complete AI Based</span>
+                        <span class="sub-title">(Project 0001)</span>
+                    </span>
+                </div>
+                <ul id="sheetList">
+                </ul>
+            </nav>
+
+            <main class="content">
+                <div id="mainTitleHeader">
+                    <h1>
+                        <span id="typewriterText"></span>
+                        <span class="cursor">|</span>
+                    </h1>
+                    <p>Select a sheet from the sidebar to view your data.</p>
+                </div>
+                
+                <div id="dataContainer">
+                </div>
+            </main>
+            
+        </div>
+    </div> 
+
+    <script src="./script.js"></script>
+</body>
+</html>
+2. Complete style.css (Final)
+The CSS content remains the same as the last verified version, incorporating all styling fixes and the login styles.
+
+CSS
+
 body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -5,41 +99,64 @@ body {
     color: #333;
 }
 
+/* --- LOGIN PAGE STYLES --- */
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #2c3e50; /* Match sidebar background color */
+    width: 100%;
+}
+
+#login-box {
+    width: 300px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+#login-box h2 {
+    color: #2c3e50;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#login-button {
+    background-color: #3498db !important;
+}
+
+
 /* App Layout */
 .app-container {
     display: flex;
     min-height: 100vh;
+    width: 100%;
 }
 
 /* --- SIDEBAR STYLES --- */
 .sidebar {
     width: 250px;
-    background-color: #2c3e50; /* Dark blue/grey */
+    background-color: #2c3e50;
     color: white;
     padding: 20px 0;
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
 }
 
-/* UPDATED Logo Styling - Modern, Clean Professional Look */
+/* UPDATED Logo Styling */
 .sidebar .logo {
-    /* Adjusted font size to fit "CONTROL PANEL" better */
     font-size: 1.7em; 
     font-weight: 700; 
-    
-    /* Font style for modern look */
     font-family: 'Oswald', 'Montserrat', sans-serif; 
-    
     text-align: center;
     margin-bottom: 30px;
     padding: 0 20px;
-    
-    color: #ECF0F1; /* Clean text color */
-    
-    /* Subtle text shadow for a raised, smooth effect */
+    color: #ECF0F1; 
     text-shadow: 
         1px 1px 1px rgba(0, 0, 0, 0.4), 
         -1px -1px 1px rgba(255, 255, 255, 0.1);
-        
     letter-spacing: 2px; 
     transition: all 0.3s ease-in-out; 
     text-transform: uppercase;
@@ -53,7 +170,7 @@ body {
         -1px -1px 2px rgba(255, 255, 255, 0.2);
 }
 
-/* --- NEW: INTERACTIVE USER PROFILE STYLING --- */
+/* --- INTERACTIVE USER PROFILE STYLING --- */
 .user-profile {
     text-align: center;
     margin: 20px 0 30px 0;
@@ -62,16 +179,17 @@ body {
     position: relative;
 }
 
+/* Icon Container */
 .user-icon-container {
     width: 80px; 
     height: 80px;
     border-radius: 50%;
-    background-color: #f0f2f5; /* Light background for the circle */
+    background-color: #f0f2f5; 
     display: flex; 
     justify-content: center;
     align-items: center;
     margin: 0 auto 10px auto; 
-    border: 3px solid #7f8c8d; /* Outline for the circle */
+    border: 3px solid #7f8c8d; 
     overflow: hidden; 
     position: relative;
     cursor: pointer; 
@@ -168,13 +286,47 @@ body {
     background-color: #95a5a6;
 }
 
+/* USERNAME TEXT STYLING AND ANIMATION */
 .user-profile .username {
     display: block; 
-    font-size: 1em;
+    font-size: 1.1em; 
     font-weight: 600;
     color: #f8f8f8; 
-    margin-top: 10px;
+    margin-top: 10px; 
+    text-align: center;
+    line-height: 1.2em;
+    
+    /* Animation settings */
+    opacity: 0; 
+    animation: fadeInSlide 1s ease-out 1s forwards; 
 }
+
+/* Styling for the first line (Admin User) */
+.user-profile .username .main-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    display: block;
+}
+
+/* Styling for the second and third lines (Project Details) */
+.user-profile .username .sub-title {
+    font-size: 0.85em; 
+    font-weight: 400; 
+    display: block;
+}
+
+/* Define the Animation */
+@keyframes fadeInSlide {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* --- Sidebar Navigation Links --- */
 .sidebar ul {
@@ -212,7 +364,11 @@ body {
     box-shadow: 0 0 10px rgba(52, 152, 219, 0.4); 
 }
 
-/* --- MAIN CONTENT STYLES --- */
+/* --- MAIN CONTENT STYLES (APP-WRAPPER MUST BE FLEX) --- */
+#app-wrapper {
+    display: flex;
+    width: 100%;
+}
 .content {
     flex-grow: 1;
     padding: 40px;
@@ -369,17 +525,20 @@ body {
 
 .form-container input[type="text"],
 .form-container input[type="number"],
-.form-container input[type="date"] {
+.form-container input[type="date"],
+#login-box input[type="password"],
+#login-box input[type="text"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     font-size: 1em;
-    transition: border-color 0.2s;
+    transition: border-color 0.3s;
 }
 
-.form-container input:focus {
+.form-container input:focus,
+#login-box input:focus {
     border-color: #3498db;
     outline: none;
 }
